@@ -1,0 +1,22 @@
+# Raw runs, secrets and evidence downloads never get committed. Publish a reviewed results/*.jsonl instead.
+results/private/
+results/*.local.jsonl
+evidence/
+downloads/
+*.trace
+*.zip
+*.webm
+*.mp4
+.env
+.env.*
+*.env
+local-secrets*
+secrets/
+.secret-*
+urls.txt
+logs/
+
+__pycache__/
+*.pyc
+.venv/
+.DS_Store

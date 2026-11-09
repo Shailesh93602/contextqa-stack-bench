@@ -1,0 +1,144 @@
+# Answer key: real upstream bugs, each with a bug release and the next (fixed) release.
+# compare_verified = git compare showed the fix absent from bug_tag and present in fix_tag.
+# split stays empty until the key is frozen. Do not edit facts after freezing; add a new key version.
+
+schema_version: 1
+app: umami
+upstream_repo: "https://github.com/umami-software/umami"
+bugs:
+  - id: umami-2557
+    upstream_issue: "https://github.com/umami-software/umami/issues/2557"
+    symptom: "Search (websites, users) is broken on MySQL only."
+    layer: [DB]
+    feature_tags: [db-specific]
+    bug_tag: mysql-v2.10.1
+    fix_tag: mysql-v2.10.2
+    fix_urls:
+      - "https://github.com/umami-software/umami/pull/2564"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2024-03-06"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "The same version works on Postgres: the DB-swap case."
+
+  - id: umami-2543
+    upstream_issue: "https://github.com/umami-software/umami/issues/2543"
+    symptom: "After 2.10.0, teams show no websites and websites can't be assigned."
+    layer: [API, DB]
+    feature_tags: []
+    bug_tag: v2.10.0
+    fix_tag: v2.10.1
+    fix_urls:
+      - "https://github.com/umami-software/umami/pull/2548"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2024-02-29"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: umami-2433
+    upstream_issue: "https://github.com/umami-software/umami/issues/2433"
+    symptom: "\"Add website\" is shown to View-only users."
+    layer: [UI]
+    feature_tags: [roles]
+    bug_tag: v2.9.0
+    fix_tag: v2.10.0
+    fix_urls:
+      - "https://github.com/umami-software/umami/pull/2445"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2023-12-22"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: umami-2400
+    upstream_issue: "https://github.com/umami-software/umami/issues/2400"
+    symptom: "The create-user dialog spins and never closes (the user is saved)."
+    layer: [UI, API]
+    feature_tags: []
+    bug_tag: v2.8.0
+    fix_tag: v2.9.0
+    fix_urls:
+      - "https://github.com/umami-software/umami/pull/2401"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2023-12-01"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: umami-3802
+    upstream_issue: "https://github.com/umami-software/umami/issues/3802"
+    symptom: "After switching to a team you can't switch back to My Account."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: "3.0.1"
+    fix_tag: "3.0.2"
+    fix_urls:
+      - "https://github.com/umami-software/umami/pull/3803"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-12-02"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: umami-4029
+    upstream_issue: "https://github.com/umami-software/umami/issues/4029"
+    symptom: "Sessions: paging drops the date filter."
+    layer: [UI, API]
+    feature_tags: []
+    bug_tag: "3.0.3"
+    fix_tag: "3.1.0"
+    fix_urls:
+      - "https://github.com/umami-software/umami/pull/4046"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-02-21"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: umami-3970
+    upstream_issue: "https://github.com/umami-software/umami/issues/3970"
+    symptom: "Device and Events pages fail with a Postgres syntax error."
+    layer: [DB]
+    feature_tags: [db-specific]
+    bug_tag: "3.0.3"
+    fix_tag: "3.1.0"
+    fix_urls:
+      - "https://github.com/umami-software/umami/pull/4147"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-04-16"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Fix commit 3f44ec7b7d re-checked: absent in v3.0.3, present in v3.1.0."
+
+  - id: umami-4133
+    upstream_issue: "https://github.com/umami-software/umami/issues/4133"
+    symptom: "The Pages report hides query parameters that are stored in url_query."
+    layer: [API, DB]
+    feature_tags: []
+    bug_tag: "3.1.0"
+    fix_tag: "3.2.0"
+    fix_urls:
+      - "https://github.com/umami-software/umami/pull/4139"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-05-07"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: umami-4136
+    upstream_issue: "https://github.com/umami-software/umami/issues/4136"
+    symptom: "Long link URLs push the Edit/Delete buttons off screen."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: "3.1.0"
+    fix_tag: "3.2.0"
+    fix_urls:
+      - "https://github.com/umami-software/umami/pull/4182"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-05-14"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]

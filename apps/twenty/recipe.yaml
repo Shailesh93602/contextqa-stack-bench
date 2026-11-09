@@ -1,0 +1,67 @@
+# Recipe skeleton: what our research already knows about running this app. Not boot-tested unless a note says so.
+# null = not recorded yet.
+
+schema_version: 1
+app: twenty
+name: "Twenty CRM"
+upstream_repo: "https://github.com/twentyhq/twenty"
+licence: "AGPLv3 with an exception, plus some files under a commercial licence marked /* @license Enterprise */. Avoid bugs in enterprise-marked features."
+stack:
+  frontend: [react]
+  backend: [node, nestjs]
+  db: [postgres]
+  other: [redis]
+versions:
+  - version: twenty/v2.8.5
+    images: ["twentycrm/twenty:v2.8.5"]
+  - version: v2.9.0
+    images: ["twentycrm/twenty:v2.9.0"]
+  - version: v2.14.4
+    images: ["twentycrm/twenty:v2.14.4"]
+  - version: v2.15.0
+    images: ["twentycrm/twenty:v2.15.0"]
+  - version: v2.16.1
+    images: ["twentycrm/twenty:v2.16.1"]
+  - version: v2.17.0
+    images: ["twentycrm/twenty:v2.17.0"]
+  - version: v2.19.4
+    images: ["twentycrm/twenty:v2.19.4"]
+  - version: v2.20.0
+    images: ["twentycrm/twenty:v2.20.0"]
+  - version: v2.24.1
+    images: ["twentycrm/twenty:v2.24.1"]
+  - version: v2.25.0
+    images: ["twentycrm/twenty:v2.25.0"]
+  - version: v2.28.0
+    images: ["twentycrm/twenty:v2.28.0"]
+  - version: v2.29.0
+    images: ["twentycrm/twenty:v2.29.0"]
+  - version: v2.41.0
+    images: ["twentycrm/twenty:v2.41.0"]
+  - version: v2.42.2
+    images: ["twentycrm/twenty:v2.42.2"]
+  - version: v2.43.0
+    images: ["twentycrm/twenty:v2.43.0"]
+  - version: v2.44.0
+    images: ["twentycrm/twenty:v2.44.0"]
+  - version: v2.46.0
+    images: ["twentycrm/twenty:v2.46.0"]
+  - version: v2.47.0
+    images: ["twentycrm/twenty:v2.47.0"]
+services: [server, "worker (same image)", "postgres 16", redis]
+ports:
+  app: null
+ram_per_version: "about 2 GB (inferred from upstream self-host docs)"
+public_url_setting: SERVER_URL
+admin_bootstrap:
+  - "Sign up with email + password on first open, before any URL is public (sign-up is open)."
+  - "IS_EMAIL_VERIFICATION_REQUIRED=false and IS_MULTIWORKSPACE_ENABLED=false (defaults on main; inferred for older tags)."
+seed:
+  - "twenty-23828: opportunity amount with more decimals than the field setting, via REST API or CSV import."
+  - "twenty-25218: legacy null phone subfields, via the API."
+  - "twenty-23341: a second user with the Member role."
+sign_in:
+  type: password
+hosting_notes:
+  - "Each version needs its own database: migrations only go forward, and an older server on an upgraded schema breaks. A shared Postgres with one database per version and a shared Redis is fine."
+  - "Git tags are twenty/vX.Y.Z from about v2.9 onward, vX.Y.Z before that."

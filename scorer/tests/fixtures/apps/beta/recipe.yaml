@@ -1,0 +1,14 @@
+schema_version: 1
+app: beta
+name: "Beta (fixture)"
+upstream_repo: "https://github.com/example/beta"
+licence: MIT
+stack:
+  frontend: [angular]
+  backend: [node]
+  db: [mysql]
+versions:
+  - version: "2.0"
+  - version: "2.1"
+sign_in:
+  type: password

@@ -1,0 +1,65 @@
+# Recipe skeleton: what our research already knows about running this app. Not boot-tested unless a note says so.
+# null = not recorded yet.
+
+schema_version: 1
+app: bigcapital
+name: Bigcapital
+upstream_repo: "https://github.com/bigcapitalhq/bigcapital"
+licence: AGPL-3.0
+stack:
+  frontend: [react]
+  backend: [node, nestjs]
+  db: [mysql]
+  other: [redis]
+versions:
+  - version: v0.19.0
+    images: ["bigcapitalhq/webapp:v0.19.0", "bigcapitalhq/server:v0.19.0"]
+  - version: v0.19.1
+    images: ["bigcapitalhq/webapp:v0.19.1", "bigcapitalhq/server:v0.19.1"]
+  - version: v0.25.16
+    images: ["bigcapitalhq/webapp:v0.25.16", "bigcapitalhq/server:v0.25.16"]
+  - version: v0.25.18
+    images: ["bigcapitalhq/webapp:v0.25.18", "bigcapitalhq/server:v0.25.18"]
+  - version: v0.25.19
+    images: ["bigcapitalhq/webapp:v0.25.19", "bigcapitalhq/server:v0.25.19"]
+  - version: v0.25.20
+    images: ["bigcapitalhq/webapp:v0.25.20", "bigcapitalhq/server:v0.25.20"]
+  - version: v0.25.22
+    images: ["bigcapitalhq/webapp:v0.25.22", "bigcapitalhq/server:v0.25.22"]
+  - version: v0.25.33
+    images: ["bigcapitalhq/webapp:v0.25.33", "bigcapitalhq/server:v0.25.33"]
+  - version: v0.25.34
+    images: ["bigcapitalhq/webapp:v0.25.34", "bigcapitalhq/server:v0.25.34"]
+  - version: v0.25.35
+    images: ["bigcapitalhq/webapp:v0.25.35", "bigcapitalhq/server:v0.25.35"]
+  - version: v0.25.36
+    images: ["bigcapitalhq/webapp:v0.25.36", "bigcapitalhq/server:v0.25.36"]
+  - version: v0.25.38
+    images: ["bigcapitalhq/webapp:v0.25.38", "bigcapitalhq/server:v0.25.38"]
+  - version: v0.25.39
+    images: ["bigcapitalhq/webapp:v0.25.39", "bigcapitalhq/server:v0.25.39"]
+  - version: v0.25.40
+    images: ["bigcapitalhq/webapp:v0.25.40", "bigcapitalhq/server:v0.25.40"]
+  - version: v0.25.41
+    images: ["bigcapitalhq/webapp:v0.25.41", "bigcapitalhq/server:v0.25.41"]
+  - version: v0.25.42
+    images: ["bigcapitalhq/webapp:v0.25.42", "bigcapitalhq/server:v0.25.42"]
+  - version: v0.25.44
+    images: ["bigcapitalhq/webapp:v0.25.44", "bigcapitalhq/server:v0.25.44"]
+services: ["envoy proxy", webapp, server, "database_migration job", mysql, redis, "gotenberg (PDF only)", "garage S3 (uploads only)", "clickhouse (off by default)"]
+ports:
+  app: null
+ram_per_version: "about 1.5-2 GB (inferred)"
+public_url_setting: BASE_URL
+admin_bootstrap:
+  - "Sign up before any URL is public (open sign-up; SIGNUP_EMAIL_CONFIRMATION=false by default)."
+  - "Finish the organisation wizard (name, base currency, fiscal year) and wait for the build job."
+seed:
+  - "bigcapital-1069: organisation base currency EUR."
+  - "bigcapital-1305: S3 storage configured."
+sign_in:
+  type: password
+hosting_notes:
+  - "The server needs MySQL root: it creates a separate database per tenant (inferred), so each version needs its own MySQL or system DB prefix."
+  - "bigcapital-558 is on the old pre-NestJS stack; its compose may differ."
+  - "bigcapital-1380 needs the browser time zone set to America/Los_Angeles."

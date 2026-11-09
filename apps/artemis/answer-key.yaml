@@ -1,0 +1,177 @@
+# Answer key: real upstream bugs, each with a bug release and the next (fixed) release.
+# compare_verified = git compare showed the fix absent from bug_tag and present in fix_tag.
+# split stays empty until the key is frozen. Do not edit facts after freezing; add a new key version.
+
+schema_version: 1
+app: artemis
+upstream_repo: "https://github.com/ls1intum/Artemis"
+bugs:
+  - id: artemis-14414
+    upstream_issue: "https://github.com/ls1intum/Artemis/issues/14414"
+    symptom: "Sorting a course's exercises by \"Dates\" gives the wrong order."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: "10.5"
+    fix_tag: "10.6"
+    fix_urls:
+      - "https://github.com/ls1intum/Artemis/pull/14452"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-11-02"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: artemis-14446
+    upstream_issue: "https://github.com/ls1intum/Artemis/issues/14446"
+    symptom: "An imported exercise with an invalid title cannot be updated (save fails)."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: "10.5"
+    fix_tag: "10.6"
+    fix_urls:
+      - "https://github.com/ls1intum/Artemis/pull/14452"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-11-02"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Same fix PR as artemis-14414."
+
+  - id: artemis-14393
+    upstream_issue: "https://github.com/ls1intum/Artemis/issues/14393"
+    symptom: "When you edit an exam, its start/end/confirmation texts are empty and the form looks broken."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: "10.4"
+    fix_tag: "10.5"
+    fix_urls:
+      - "https://github.com/ls1intum/Artemis/pull/14398"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-10-28"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: artemis-14285
+    upstream_issue: "https://github.com/ls1intum/Artemis/issues/14285"
+    symptom: "A quiz question will not accept decimal points (e.g. 5.5)."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: "10.4"
+    fix_tag: "10.5"
+    fix_urls:
+      - "https://github.com/ls1intum/Artemis/pull/14345"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-10-24"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: artemis-14257
+    upstream_issue: "https://github.com/ls1intum/Artemis/issues/14257"
+    symptom: "Typing \":)\" in the problem-statement editor turns it into an emoji."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: "10.4"
+    fix_tag: "10.5"
+    fix_urls:
+      - "https://github.com/ls1intum/Artemis/pull/14345"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-10-24"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Same fix PR as artemis-14285."
+
+  - id: artemis-14338
+    upstream_issue: "https://github.com/ls1intum/Artemis/issues/14338"
+    symptom: "Empty lines vanish from a message once it is sent."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: "10.4"
+    fix_tag: "10.5"
+    fix_urls:
+      - "https://github.com/ls1intum/Artemis/pull/14342"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-10-24"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: artemis-14337
+    upstream_issue: "https://github.com/ls1intum/Artemis/issues/14337"
+    symptom: "Backspace cannot remove list formatting on the first line of the message editor."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: "10.4"
+    fix_tag: "10.5"
+    fix_urls:
+      - "https://github.com/ls1intum/Artemis/pull/14342"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-10-24"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Same fix PR as artemis-14338."
+
+  - id: artemis-14211
+    upstream_issue: "https://github.com/ls1intum/Artemis/issues/14211"
+    symptom: "Editing a lecture video unit (e.g. its title) fails with \"Creating an attachment requires a file\"."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: "10.3"
+    fix_tag: "10.3.1"
+    fix_urls:
+      - "https://github.com/ls1intum/Artemis/pull/14235"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-10-16"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: artemis-14071
+    upstream_issue: "https://github.com/ls1intum/Artemis/issues/14071"
+    symptom: "The competency import dialog shows a raw translation key instead of text."
+    layer: [UI]
+    feature_tags: [locale]
+    bug_tag: "10.1"
+    fix_tag: "10.2"
+    fix_urls:
+      - "https://github.com/ls1intum/Artemis/pull/14081"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-10-06"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: artemis-13843
+    upstream_issue: "https://github.com/ls1intum/Artemis/issues/13843"
+    symptom: "Admin > Users: creating an internal user with a random password shows an untranslated error."
+    layer: [UI]
+    feature_tags: [locale]
+    bug_tag: "9.9"
+    fix_tag: "10.0"
+    fix_urls:
+      - "https://github.com/ls1intum/Artemis/pull/13887"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-09-19"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Reported on 9.9.3; presence in the 9.9 image is inferred."
+
+  - id: artemis-13471
+    upstream_issue: "https://github.com/ls1intum/Artemis/issues/13471"
+    symptom: "Typing nonsense into a date field marks it red, but the form still saves with the date empty (competency create)."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: "9.9"
+    fix_tag: "10.0"
+    fix_urls:
+      - "https://github.com/ls1intum/Artemis/pull/13472"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-09-07"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Presence in the 9.9 image is inferred."

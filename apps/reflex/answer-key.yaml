@@ -1,0 +1,135 @@
+# Answer key: real upstream bugs, each with a bug release and the next (fixed) release.
+# compare_verified = git compare showed the fix absent from bug_tag and present in fix_tag.
+# split stays empty until the key is frozen. Do not edit facts after freezing; add a new key version.
+
+schema_version: 1
+app: reflex
+upstream_repo: "https://github.com/reflex-dev/reflex"
+bugs:
+  - id: reflex-7486
+    upstream_issue: "https://github.com/reflex-dev/reflex/issues/7486"
+    symptom: "A LocalStorage value over 1 MB causes a websocket reconnect storm and the page never hydrates."
+    layer: [UI]
+    feature_tags: [websocket]
+    bug_tag: v0.10.0
+    fix_tag: v0.10.1
+    fix_urls:
+      - "https://github.com/reflex-dev/reflex/pull/7605"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-10-20"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Host app reflex-examples github-stats (uses rx.LocalStorage); pre-seed a value over 1 MB before load. Oracle: hundreds of websocket opens in the network log, page stuck unhydrated."
+
+  - id: reflex-6482
+    upstream_issue: "https://github.com/reflex-dev/reflex/issues/6482"
+    symptom: "A textarea with enter_key_submit throws ReferenceError: enterKeySubmitOnKeyDown is not defined, and nothing is sent."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.9.2
+    fix_tag: v0.9.3
+    fix_urls:
+      - "https://github.com/reflex-dev/reflex/pull/6485"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-05-11"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Host app reflex-examples chat_v2 input box."
+
+  - id: reflex-6512
+    upstream_issue: "https://github.com/reflex-dev/reflex/issues/6512"
+    symptom: "An accordion inside rx.foreach has broken width and styling."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.9.2
+    fix_tag: v0.9.3
+    fix_urls:
+      - "https://github.com/reflex-dev/reflex/pull/6513"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-05-14"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Host app reflex-examples form-designer, Responses page. Needs a visual/width assertion."
+
+  - id: reflex-5130
+    upstream_issue: "https://github.com/reflex-dev/reflex/issues/5130"
+    symptom: "A 404 loops in an endless redirect when frontend_path is set."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.8.28
+    fix_tag: v0.9.0
+    fix_urls:
+      - "https://github.com/reflex-dev/reflex/pull/6328"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-04-16"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Host app reflex-examples counter with frontend_path=\"/app\"; open /app/nope."
+
+  - id: reflex-5706
+    upstream_issue: "https://github.com/reflex-dev/reflex/issues/5706"
+    symptom: "A dynamic route gives a 404 in the console and the page loses its styling (regression since 0.8.0)."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.8.6
+    fix_tag: v0.8.7
+    fix_urls:
+      - "https://github.com/reflex-dev/reflex/pull/5711"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-08-14"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Host app reflex-examples form-designer, production build; hard-load /edit/form/<id>. Only shows in a production build."
+
+  - id: reflex-5835
+    upstream_issue: "https://github.com/reflex-dev/reflex/issues/5835"
+    symptom: "rx.color(...) stopped working as a style value, so backgrounds and colours are missing."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.8.13
+    fix_tag: v0.8.14
+    fix_urls:
+      - "https://github.com/reflex-dev/reflex/pull/5836"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-09-30"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Regression from upstream PR #5819, which is in v0.8.13. Host app reflex-examples todo or chat_v2."
+
+  - id: reflex-4605
+    upstream_issue: "https://github.com/reflex-dev/reflex/issues/4605"
+    symptom: "With a duplicated tab, the first tab stops updating while a background event runs in the second."
+    layer: [UI]
+    feature_tags: [websocket]
+    bug_tag: v0.8.5
+    fix_tag: v0.8.6
+    fix_urls:
+      - "https://github.com/reflex-dev/reflex/pull/4607"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-08-04"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Host app reflex-examples lorem-stream or clock. Needs 2 browser tabs."
+
+  - id: reflex-6977
+    upstream_issue: "https://github.com/reflex-dev/reflex/issues/6977"
+    symptom: "The id given to rx.plotly(id=...) never reaches the DOM."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.9.11
+    fix_tag: v0.9.12
+    fix_urls:
+      - "https://github.com/reflex-dev/reflex/pull/7082"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-09-14"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Alternate item. Host app reflex-examples nba."

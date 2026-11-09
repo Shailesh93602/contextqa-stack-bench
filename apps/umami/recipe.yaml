@@ -1,0 +1,48 @@
+# Recipe skeleton: what our research already knows about running this app. Not boot-tested unless a note says so.
+# null = not recorded yet.
+
+schema_version: 1
+app: umami
+name: Umami
+upstream_repo: "https://github.com/umami-software/umami"
+licence: MIT
+stack:
+  frontend: [nextjs, react]
+  backend: [node]
+  db: [postgres, mysql]
+versions:
+  - version: "3.0.1"
+    images: ["umamisoftware/umami:3.0.1"]
+  - version: "3.0.2"
+    images: ["umamisoftware/umami:3.0.2"]
+  - version: "3.0.3"
+    images: ["umamisoftware/umami:3.0.3"]
+  - version: "3.1.0"
+    images: ["umamisoftware/umami:3.1.0"]
+  - version: "3.2.0"
+    images: ["umamisoftware/umami:3.2.0"]
+  - version: mysql-v2.10.1
+    images: ["umamisoftware/umami:mysql-v2.10.1"]
+  - version: mysql-v2.10.2
+    images: ["umamisoftware/umami:mysql-v2.10.2"]
+  - version: v2.8.0
+    images: ["umamisoftware/umami:postgresql-v2.8.0"]
+  - version: v2.9.0
+    images: ["umamisoftware/umami:postgresql-v2.9.0"]
+  - version: v2.10.0
+    images: ["umamisoftware/umami:postgresql-v2.10.0"]
+  - version: v2.10.1
+    images: ["umamisoftware/umami:postgresql-v2.10.1"]
+services: [umami, "postgres or mysql"]
+ports:
+  app: null
+ram_per_version: "about 300-500 MB (inferred)"
+public_url_setting: null
+admin_bootstrap:
+  - "Change the upstream default admin password before any URL is public."
+seed:
+  - "Analytics pages need tracked data: load a page with the tracker script, or post to /api/send."
+sign_in:
+  type: password
+hosting_notes:
+  - "v2.x has official images for both Postgres (postgresql-vX.Y.Z) and MySQL (mysql-vX.Y.Z); v3 dropped MySQL. A DB-swap run must stay on v2.20.x or earlier."

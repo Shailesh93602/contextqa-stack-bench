@@ -1,0 +1,45 @@
+# Test fixture.
+schema_version: 1
+app: alpha
+upstream_repo: "https://github.com/example/alpha"
+bugs:
+  - id: alpha-1
+    upstream_issue: "https://github.com/example/alpha/issues/1"
+    symptom: "Dates shift by one day # not a comment"   # this is a comment
+    layer: [UI, DB]
+    feature_tags: [timezone]
+    bug_tag: v1.0.0
+    fix_tag: v1.1.0
+    fix_urls:
+      - "https://github.com/example/alpha/pull/2"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-01-01"
+    split: heldout
+    ticket_tiers: [upstream-text, clear, vague]
+  - id: alpha-2
+    upstream_issue: "https://github.com/example/alpha/issues/3"
+    symptom: "Save does nothing, says \"done\""
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v1.0.0
+    fix_tag: v1.1.0
+    fix_urls: ["https://github.com/example/alpha/pull/4"]
+    compare_verified: true
+    bug_presence_verified: true
+    fixed_at: "2026-01-02"
+    split: heldout
+    ticket_tiers: [clear]
+  - id: alpha-3
+    upstream_issue: "https://github.com/example/alpha/issues/5"
+    symptom: "Dev-only item"
+    layer: [API]
+    feature_tags: []
+    bug_tag: v1.0.0
+    fix_tag: v1.1.0
+    fix_urls: ["https://github.com/example/alpha/pull/6"]
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-01-03"
+    split: dev
+    ticket_tiers: [clear]

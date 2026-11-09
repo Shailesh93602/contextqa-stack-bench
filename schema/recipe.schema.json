@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "recipe.schema.json",
+  "title": "How to run one app at its bug and fixed releases",
+  "type": "object",
+  "required": ["schema_version", "app", "name", "upstream_repo", "licence", "stack", "versions", "sign_in"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"type": "integer", "enum": [1]},
+    "app": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "name": {"type": "string"},
+    "upstream_repo": {"type": "string", "pattern": "^https://github\\.com/[^/]+/[^/]+$"},
+    "licence": {"type": "string"},
+    "stack": {
+      "type": "object",
+      "description": "Tech tags per layer. Scores roll up per tag across apps.",
+      "additionalProperties": false,
+      "required": ["frontend", "backend", "db"],
+      "properties": {
+        "frontend": {"type": "array", "items": {"type": "string", "pattern": "^[a-z0-9.-]+$"}},
+        "backend": {"type": "array", "items": {"type": "string", "pattern": "^[a-z0-9.-]+$"}},
+        "db": {"type": "array", "items": {"type": "string", "pattern": "^[a-z0-9.-]+$"}},
+        "other": {"type": "array", "items": {"type": "string", "pattern": "^[a-z0-9.-]+$"}}
+      }
+    },
+    "versions": {
+      "type": "array",
+      "description": "Every bug_tag and fix_tag used in answer-key.yaml.",
+      "items": {
+        "type": "object",
+        "required": ["version"],
+        "additionalProperties": false,
+        "properties": {
+          "version": {"type": "string"},
+          "images": {"type": "array", "items": {"type": "string"}},
+          "compose": {"type": "string", "description": "Path to a compose file in this folder."},
+          "install": {"type": "string", "description": "Install command when there is no image."},
+          "notes": {"type": "string"}
+        }
+      }
+    },
+    "services": {"type": "array", "items": {"type": "string"}},
+    "ports": {"type": "object", "description": "Container ports, e.g. {app: 3000}. null = not recorded yet."},
+    "ram_per_version": {"type": ["string", "null"], "description": "With its source, e.g. 'about 2 GB (inferred)'."},
+    "public_url_setting": {"type": ["string", "null"], "description": "Setting that must equal the public URL."},
+    "admin_bootstrap": {"type": "array", "items": {"type": "string"}, "description": "Do these before any URL is public."},
+    "seed": {"type": "array", "items": {"type": "string"}},
+    "sign_in": {
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {"type": "string", "enum": ["password", "sso", "mfa", "magic-link", "none"]},
+        "notes": {"type": "string"}
+      }
+    },
+    "hosting_notes": {"type": "array", "items": {"type": "string"}}
+  }
+}

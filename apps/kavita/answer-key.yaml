@@ -1,0 +1,188 @@
+# Answer key: real upstream bugs, each with a bug release and the next (fixed) release.
+# compare_verified = git compare showed the fix absent from bug_tag and present in fix_tag.
+# split stays empty until the key is frozen. Do not edit facts after freezing; add a new key version.
+
+schema_version: 1
+app: kavita
+upstream_repo: "https://github.com/Kareadita/Kavita"
+bugs:
+  - id: kavita-3210
+    upstream_issue: "https://github.com/Kareadita/Kavita/issues/3210"
+    symptom: "Turning on \"Include Chapters & Files\" closes the search box when nothing matches."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.8.3.2
+    fix_tag: v0.8.4.2
+    fix_urls:
+      - "https://github.com/Kareadita/Kavita/pull/3310"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2024-10-26"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: kavita-3226
+    upstream_issue: "https://github.com/Kareadita/Kavita/issues/3226"
+    symptom: "Email settings: an invalid host field turns red but shows no message."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.8.3.2
+    fix_tag: v0.8.4.2
+    fix_urls:
+      - "https://github.com/Kareadita/Kavita/pull/3312"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2024-10-27"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: kavita-3274
+    upstream_issue: "https://github.com/Kareadita/Kavita/issues/3274"
+    symptom: "A restricted user can change their own age rating."
+    layer: [UI, API]
+    feature_tags: [roles]
+    bug_tag: v0.8.3.2
+    fix_tag: v0.8.4.2
+    fix_urls:
+      - "https://github.com/Kareadita/Kavita/pull/3308"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2024-10-25"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Needs a non-admin user with age rating Teen and without the change-age-rating permission."
+
+  - id: kavita-3291
+    upstream_issue: "https://github.com/Kareadita/Kavita/issues/3291"
+    symptom: "\"Download\" in a card's menu on On Deck does nothing."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.8.3.2
+    fix_tag: v0.8.4.2
+    fix_urls:
+      - "https://github.com/Kareadita/Kavita/pull/3308"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2024-10-25"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: kavita-3353
+    upstream_issue: "https://github.com/Kareadita/Kavita/issues/3353"
+    symptom: "Filtering Want to Read by rating, read date or progress shows an error."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.8.3.2
+    fix_tag: v0.8.4.2
+    fix_urls:
+      - "https://github.com/Kareadita/Kavita/pull/3359"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2024-11-12"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: kavita-3526
+    upstream_issue: "https://github.com/Kareadita/Kavita/issues/3526"
+    symptom: "Arrow keys do not scroll the image in the comic reader."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.8.4.2
+    fix_tag: v0.8.5.11
+    fix_urls:
+      - "https://github.com/Kareadita/Kavita/pull/3549"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-02-15"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: kavita-3564
+    upstream_issue: "https://github.com/Kareadita/Kavita/issues/3564"
+    symptom: "PDF reader: Esc closes the whole reader instead of only the search box."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.8.5.11
+    fix_tag: v0.8.6.2
+    fix_urls:
+      - "https://github.com/Kareadita/Kavita/pull/3704"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-04-05"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: kavita-3673
+    upstream_issue: "https://github.com/Kareadita/Kavita/issues/3673"
+    symptom: "A special character in a library's exclude pattern breaks the Advanced tab."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.8.5.11
+    fix_tag: v0.8.6.2
+    fix_urls:
+      - "https://github.com/Kareadita/Kavita/pull/3687"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-03-30"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: kavita-3793
+    upstream_issue: "https://github.com/Kareadita/Kavita/issues/3793"
+    symptom: "Webtoon reading mode cannot be switched off."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.8.6.2
+    fix_tag: v0.8.7
+    fix_urls:
+      - "https://github.com/Kareadita/Kavita/pull/3820"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-06-04"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: kavita-3868
+    upstream_issue: "https://github.com/Kareadita/Kavita/issues/3868"
+    symptom: "Clicking \"X\" on a reading-list item does not remove it."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.8.6.2
+    fix_tag: v0.8.7
+    fix_urls:
+      - "https://github.com/Kareadita/Kavita/pull/3872"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-06-23"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: kavita-4697
+    upstream_issue: "https://github.com/Kareadita/Kavita/issues/4697"
+    symptom: "Page Up/Down no longer flips pages in the vertical comic reader."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.9.0.2
+    fix_tag: v0.9.1.4
+    fix_urls:
+      - "https://github.com/Kareadita/Kavita/pull/4731"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-05-31"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: kavita-4668
+    upstream_issue: "https://github.com/Kareadita/Kavita/issues/4668"
+    symptom: "Webtoon mode: the width slider stretches pages instead of zooming."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.9.0.2
+    fix_tag: v0.9.1.4
+    fix_urls:
+      - "https://github.com/Kareadita/Kavita/pull/4830"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-08-09"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]

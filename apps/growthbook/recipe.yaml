@@ -1,0 +1,53 @@
+# Recipe skeleton: what our research already knows about running this app. Not boot-tested unless a note says so.
+# null = not recorded yet.
+
+schema_version: 1
+app: growthbook
+name: GrowthBook
+upstream_repo: "https://github.com/growthbook/growthbook"
+licence: "Not recorded in our research. Some features need an Enterprise licence; bugs in them were dropped."
+stack:
+  frontend: [react]
+  backend: [node]
+  db: [mongodb]
+versions:
+  - version: f45ee09
+    images: ["growthbook/growthbook:git-f45ee09"]
+  - version: v3.1.0
+    images: ["growthbook/growthbook:3.1.0"]
+  - version: v3.2.0
+    images: ["growthbook/growthbook:3.2.0"]
+  - version: v3.3.0
+    images: ["growthbook/growthbook:3.3.0"]
+  - version: v3.4.0
+    images: ["growthbook/growthbook:3.4.0"]
+  - version: v3.5.0
+    images: ["growthbook/growthbook:3.5.0"]
+  - version: v4.0.0
+    images: ["growthbook/growthbook:4.0.0"]
+  - version: v4.1.0
+    images: ["growthbook/growthbook:4.1.0"]
+  - version: v4.4.0
+    images: ["growthbook/growthbook:4.4.0"]
+  - version: v5.0.0
+    images: ["growthbook/growthbook:5.0.0"]
+  - version: v5.1.0
+    images: ["growthbook/growthbook:5.1.0"]
+  - version: v5.2.0
+    images: ["growthbook/growthbook:5.2.0"]
+services: ["growthbook (app + api in one container)", "mongo:7 (one database per version)"]
+ports:
+  app: 3000
+  api: 3100
+ram_per_version: null
+public_url_setting: "APP_ORIGIN and API_HOST"
+admin_bootstrap:
+  - "Set JWT_SECRET and ENCRYPTION_KEY per version (random, never committed)."
+  - "Register the first (admin) account before any URL is public: sign-up is open and unauthenticated."
+seed: []
+sign_in:
+  type: password
+  notes: "Email + password; the first account becomes admin."
+hosting_notes:
+  - "One Mongo container can serve every version, one database per version."
+  - "Each version needs two public URLs (app and api)."

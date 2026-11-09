@@ -1,0 +1,57 @@
+# Recipe skeleton: what our research already knows about running this app. Not boot-tested unless a note says so.
+# null = not recorded yet.
+
+schema_version: 1
+app: reflex
+name: "Reflex (on reflex-examples host apps)"
+upstream_repo: "https://github.com/reflex-dev/reflex"
+licence: Apache-2.0
+stack:
+  frontend: [react, reflex]
+  backend: [python, starlette]
+  db: [sqlite]
+versions:
+  - version: v0.8.5
+    install: "pip install reflex==0.8.5 into reflex-examples @ a69a6e1e"
+  - version: v0.8.6
+    install: "pip install reflex==0.8.6 into reflex-examples @ a69a6e1e"
+  - version: v0.8.7
+    install: "pip install reflex==0.8.7 into reflex-examples @ a69a6e1e"
+  - version: v0.8.13
+    install: "pip install reflex==0.8.13 into reflex-examples @ a69a6e1e"
+  - version: v0.8.14
+    install: "pip install reflex==0.8.14 into reflex-examples @ a69a6e1e"
+  - version: v0.8.28
+    install: "pip install reflex==0.8.28 into reflex-examples @ a69a6e1e"
+  - version: v0.9.0
+    install: "pip install reflex==0.9.0 into reflex-examples @ a69a6e1e"
+  - version: v0.9.2
+    install: "pip install reflex==0.9.2 into reflex-examples @ ebe19ff"
+  - version: v0.9.3
+    install: "pip install reflex==0.9.3 into reflex-examples @ ebe19ff"
+  - version: v0.9.11
+    install: "pip install reflex==0.9.11 into reflex-examples @ ebe19ff"
+  - version: v0.9.12
+    install: "pip install reflex==0.9.12 into reflex-examples @ ebe19ff"
+  - version: v0.10.0
+    install: "pip install reflex==0.10.0 into reflex-examples @ ebe19ff"
+  - version: v0.10.1
+    install: "pip install reflex==0.10.1 into reflex-examples @ ebe19ff"
+services:
+  - "reflex app (frontend + backend; one port in production mode)"
+ports:
+  frontend: 3000
+  backend: 8000
+ram_per_version: null
+public_url_setting: null
+admin_bootstrap:
+  - "form-designer: the first user becomes admin; register it before any URL is public."
+seed: []
+sign_in:
+  type: password
+  notes: "form-designer uses reflex-local-auth."
+hosting_notes:
+  - "Reflex is a framework: each bug runs in a host app from reflex-examples (no tags), pinned to ebe19ff for 0.9/0.10 bugs (needs reflex >= 0.9.2) and a69a6e1e for 0.8 bugs (reflex >= 0.8.0). Both halves of a pair use the same host commit, so reflex-5130 (v0.8.28 -> v0.9.0) uses a69a6e1e."
+  - "Wait for websocket hydration before acting; avoid hashed css-* classes and radix-* ids in locators."
+  - "Dev mode needs both ports public (backend port 8000 inferred); production mode serves one port."
+  - "Some bugs only show in a production build (reflex-5706)."

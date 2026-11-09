@@ -1,0 +1,179 @@
+# Answer key: real upstream bugs, each with a bug release and the next (fixed) release.
+# compare_verified = git compare showed the fix absent from bug_tag and present in fix_tag.
+# split stays empty until the key is frozen. Do not edit facts after freezing; add a new key version.
+
+schema_version: 1
+app: twenty
+upstream_repo: "https://github.com/twentyhq/twenty"
+bugs:
+  - id: twenty-23828
+    upstream_issue: "https://github.com/twentyhq/twenty/issues/23828"
+    symptom: "A currency amount changes in the database just by opening and closing the field editor."
+    layer: [UI, DB]
+    feature_tags: [locale]
+    bug_tag: v2.28.0
+    fix_tag: v2.29.0
+    fix_urls:
+      - "https://github.com/twentyhq/twenty/pull/23874"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-08-07"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Settings > Experience number format 1.234,56. The amount needs more decimals than the field setting (e.g. 458.64); easiest to seed through the REST API or CSV import."
+
+  - id: twenty-23339
+    upstream_issue: "https://github.com/twentyhq/twenty/issues/23339"
+    symptom: "Creating a new option from a multi-select cell does nothing."
+    layer: [UI, API]
+    feature_tags: []
+    bug_tag: v2.24.1
+    fix_tag: v2.25.0
+    fix_urls:
+      - "https://github.com/twentyhq/twenty/pull/23420"
+    compare_verified: true
+    bug_presence_verified: true
+    fixed_at: "2026-07-28"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Git bug tag v2.24.3 has no image; v2.24.1 re-checked (fix absent). The reporter names v2.24.1."
+
+  - id: twenty-23341
+    upstream_issue: "https://github.com/twentyhq/twenty/issues/23341"
+    symptom: "\"Create option\" is shown to members without data-model permission."
+    layer: [UI]
+    feature_tags: [roles]
+    bug_tag: v2.24.1
+    fix_tag: v2.25.0
+    fix_urls:
+      - "https://github.com/twentyhq/twenty/pull/23410"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-07-28"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Needs a second user with the Member role, added by workspace invite link."
+
+  - id: twenty-21043
+    upstream_issue: "https://github.com/twentyhq/twenty/issues/21043"
+    symptom: "The \"Show fields created in the future\" setting is ignored: a new field is not shown."
+    layer: [UI, API, DB]
+    feature_tags: []
+    bug_tag: twenty/v2.8.5
+    fix_tag: v2.9.0
+    fix_urls:
+      - "https://github.com/twentyhq/twenty/pull/21111"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-06-03"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: twenty-21780
+    upstream_issue: "https://github.com/twentyhq/twenty/issues/21780"
+    symptom: "Save stays disabled after changing a Phones field's default country."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v2.14.4
+    fix_tag: v2.15.0
+    fix_urls:
+      - "https://github.com/twentyhq/twenty/pull/21847"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-06-19"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Settings > Data Model > People > Phones."
+
+  - id: twenty-21578
+    upstream_issue: "https://github.com/twentyhq/twenty/issues/21578"
+    symptom: "The drag-select box does not follow the cursor in a record table."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v2.14.4
+    fix_tag: v2.15.0
+    fix_urls:
+      - "https://github.com/twentyhq/twenty/pull/21579"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-06-18"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: twenty-22383
+    upstream_issue: "https://github.com/twentyhq/twenty/issues/22383"
+    symptom: "Chips that overflow a cell show no \"+N\", so some related records are hidden."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v2.19.4
+    fix_tag: v2.20.0
+    fix_urls:
+      - "https://github.com/twentyhq/twenty/pull/22748"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-07-10"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "A company with about 10 related people, in the side panel."
+
+  - id: twenty-22139
+    upstream_issue: "https://github.com/twentyhq/twenty/issues/22139"
+    symptom: "A \"Create workspace\" button is shown when multi-workspace is off, and clicking it does nothing."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v2.16.1
+    fix_tag: v2.17.0
+    fix_urls:
+      - "https://github.com/twentyhq/twenty/pull/22202"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-06-26"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: twenty-26641
+    upstream_issue: "https://github.com/twentyhq/twenty/issues/26641"
+    symptom: "A record page shows gt/lt error toasts when the view is sorted by a boolean field."
+    layer: [UI, API]
+    feature_tags: []
+    bug_tag: v2.43.0
+    fix_tag: v2.44.0
+    fix_urls:
+      - "https://github.com/twentyhq/twenty/pull/26500"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-09-28"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: twenty-25218
+    upstream_issue: "https://github.com/twentyhq/twenty/issues/25218"
+    symptom: "A phone field shows empty items and an \"Invalid value to persist\" error."
+    layer: [UI, API]
+    feature_tags: []
+    bug_tag: v2.41.0
+    fix_tag: v2.42.2
+    fix_urls:
+      - "https://github.com/twentyhq/twenty/pull/25420"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-09-22"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Weak: needs legacy null phone subfields (seed through the API); the trigger is not clear from the issue. v2.42.0 has no image; v2.42.2 re-checked (fix present)."
+
+  - id: twenty-24239
+    upstream_issue: "https://github.com/twentyhq/twenty/issues/24239"
+    symptom: "The Attachment/Note/Task relation label defaults to \"Company\" on every object."
+    layer: [DB]
+    feature_tags: []
+    bug_tag: v2.46.0
+    fix_tag: v2.47.0
+    fix_urls:
+      - "https://github.com/twentyhq/twenty/pull/27760"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-10-13"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Weak: server-only fix. Whether it applies to existing workspaces is not known; test on a fresh workspace per version."

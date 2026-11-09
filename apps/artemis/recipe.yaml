@@ -1,0 +1,47 @@
+# Recipe skeleton: what our research already knows about running this app. Not boot-tested unless a note says so.
+# null = not recorded yet.
+
+schema_version: 1
+app: artemis
+name: Artemis
+upstream_repo: "https://github.com/ls1intum/Artemis"
+licence: MIT
+stack:
+  frontend: [angular]
+  backend: [java, spring-boot]
+  db: [postgres]
+versions:
+  - version: "9.9"
+    images: ["ghcr.io/ls1intum/artemis:9.9"]
+  - version: "10.0"
+    images: ["ghcr.io/ls1intum/artemis:10.0"]
+  - version: "10.1"
+    images: ["ghcr.io/ls1intum/artemis:10.1"]
+  - version: "10.2"
+    images: ["ghcr.io/ls1intum/artemis:10.2"]
+  - version: "10.3"
+    images: ["ghcr.io/ls1intum/artemis:10.3"]
+  - version: "10.3.1"
+    images: ["ghcr.io/ls1intum/artemis:10.3.1"]
+  - version: "10.4"
+    images: ["ghcr.io/ls1intum/artemis:10.4"]
+  - version: "10.5"
+    images: ["ghcr.io/ls1intum/artemis:10.5"]
+  - version: "10.6"
+    images: ["ghcr.io/ls1intum/artemis:10.6"]
+services: ["artemis app", "postgres:18.6-alpine"]
+ports:
+  app: 8080
+ram_per_version: "about 6 GB (upstream docs); first start can take up to 600 s"
+public_url_setting: "SERVER_URL (name inferred)"
+admin_bootstrap:
+  - "Set a JWT secret, the internal admin password and INFO_OPERATORNAME, INFO_OPERATORADMINNAME, INFO_UNIVERSITYNAME in local-secrets.env: placeholders are refused."
+  - "Sign in as the internal admin and create one course; tickets create exams, quizzes, lectures and messages from there."
+seed: []
+sign_in:
+  type: password
+hosting_notes:
+  - "The upstream compose fixes container and network names, so two copies can't run side by side unchanged: use a per-version compose without fixed names."
+  - "Two versions side by side is about 12 GB (inferred): use a VM, or run one version at a time."
+  - "Programming exercises need LocalVC/LocalCI and a build agent; no chosen bug needs them."
+  - "Not boot-tested yet."

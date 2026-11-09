@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "results.schema.json",
+  "title": "One line of results.jsonl: one ContextQA run on one release of one bug",
+  "type": "object",
+  "required": ["bug_id", "version", "capability", "verdict", "expected", "correct", "run_url",
+               "started_at", "ended_at", "model", "contextqa_version", "run_index"],
+  "additionalProperties": false,
+  "properties": {
+    "bug_id": {"type": "string", "description": "id from answer-key.yaml."},
+    "version": {"type": "string", "enum": ["bug", "fixed"]},
+    "capability": {"type": "string", "enum": ["repro", "verify_fix"]},
+    "verdict": {"type": "string", "description": "What ContextQA returned, e.g. REPRODUCED, NOT_REPRODUCED, NEEDS_INFO, INTERNAL_ERROR, FIXED, NOT_FIXED."},
+    "expected": {"type": "string", "enum": ["REPRODUCED", "NOT_REPRODUCED", "FIXED", "NOT_FIXED"]},
+    "correct": {"type": "boolean", "description": "verdict == expected. The scorer recomputes it and warns on a mismatch."},
+    "ticket_tier": {"type": "string", "enum": ["upstream-text", "clear", "vague"]},
+    "run_url": {"type": "string", "description": "Public evidence page for this run (video, trace, steps)."},
+    "started_at": {"type": "string", "description": "ISO 8601 UTC."},
+    "ended_at": {"type": "string", "description": "ISO 8601 UTC."},
+    "credits": {"type": ["number", "null"]},
+    "model": {"type": "string"},
+    "contextqa_version": {"type": "string", "description": "Release or commit of every ContextQA service used."},
+    "run_index": {"type": "integer", "description": "0 for the first run; 0..N-1 for the consistency runs of the same input."}
+  }
+}

@@ -1,0 +1,55 @@
+# Recipe skeleton: what our research already knows about running this app. Not boot-tested unless a note says so.
+# null = not recorded yet.
+
+schema_version: 1
+app: ghost
+name: Ghost
+upstream_repo: "https://github.com/TryGhost/Ghost"
+licence: MIT
+stack:
+  frontend: [ember, react]
+  backend: [node]
+  db: [mysql]
+versions:
+  - version: "5.118.1"
+    images: ["ghost:5.118.1"]
+  - version: "5.119.0"
+    images: ["ghost:5.119.0"]
+  - version: "5.127.0"
+    images: ["ghost:5.127.0"]
+  - version: "5.127.1"
+    images: ["ghost:5.127.1"]
+  - version: "5.129.2"
+    images: ["ghost:5.129.2"]
+  - version: "5.130.0"
+    images: ["ghost:5.130.0"]
+  - version: "6.0.3"
+    images: ["ghost:6.0.3"]
+  - version: "6.0.4"
+    images: ["ghost:6.0.4"]
+  - version: "6.0.5"
+    images: ["ghost:6.0.5"]
+  - version: "6.54.1"
+    images: ["ghost:6.54.1"]
+  - version: "6.55.0"
+    images: ["ghost:6.55.0"]
+  - version: "6.72.0"
+    images: ["ghost:6.72.0"]
+  - version: "6.73.0"
+    images: ["ghost:6.73.0"]
+  - version: "6.74.0"
+    images: ["ghost:6.74.0"]
+services: [ghost, "mysql 8"]
+ports:
+  app: null
+ram_per_version: "about 1 GB (inferred)"
+public_url_setting: url
+admin_bootstrap:
+  - "Complete /ghost/#/setup (site title, name, email, password) before any URL is public."
+  - "Staff device verification is on by default: set security__staffDeviceVerification=false (env name inferred) or wire a mail catcher."
+seed:
+  - "ghost-23946: 16 staff invites (needs mail)."
+sign_in:
+  type: password
+hosting_notes:
+  - "The admin is mostly Ember with newer React apps: a stronger Node + MySQL proof than a React proof."

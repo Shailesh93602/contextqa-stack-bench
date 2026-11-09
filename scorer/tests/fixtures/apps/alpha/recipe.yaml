@@ -1,0 +1,17 @@
+# Test fixture, not a real app.
+schema_version: 1
+app: alpha
+name: "Alpha (fixture)"
+upstream_repo: "https://github.com/example/alpha"
+licence: MIT
+stack:
+  frontend: [react]
+  backend: [node]
+  db: [postgres]
+versions:
+  - version: v1.0.0
+    images: ["example/alpha:1.0.0"]
+  - version: v1.1.0
+    images: ["example/alpha:1.1.0"]
+sign_in:
+  type: password

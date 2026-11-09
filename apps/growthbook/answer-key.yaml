@@ -1,0 +1,194 @@
+# Answer key: real upstream bugs, each with a bug release and the next (fixed) release.
+# compare_verified = git compare showed the fix absent from bug_tag and present in fix_tag.
+# split stays empty until the key is frozen. Do not edit facts after freezing; add a new key version.
+
+schema_version: 1
+app: growthbook
+upstream_repo: "https://github.com/growthbook/growthbook"
+bugs:
+  - id: growthbook-6283
+    upstream_issue: "https://github.com/growthbook/growthbook/issues/6283"
+    symptom: "Create Feature shows environments from other projects, not only the ones relevant to the selected project."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v4.4.0
+    fix_tag: v5.0.0
+    fix_urls:
+      - "https://github.com/growthbook/growthbook/pull/6329"
+    fix_commit: "1eaf1f2e16b1bb8c664dec51283a29b8007f4c6a"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-07-10"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Round 1."
+
+  - id: growthbook-6117
+    upstream_issue: "https://github.com/growthbook/growthbook/issues/6117"
+    symptom: "Feature search for a multi-part query such as foo_bar also returns the unrelated feature foo (partial token matches)."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v4.4.0
+    fix_tag: v5.0.0
+    fix_urls:
+      - "https://github.com/growthbook/growthbook/pull/6127"
+    fix_commit: fb1631bf40f2c479ccd179e7b6bec6b893827b8e
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-06-16"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Round 1."
+
+  - id: growthbook-3307
+    upstream_issue: "https://github.com/growthbook/growthbook/issues/3307"
+    symptom: "A long JSON feature value overflows the rule box."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v3.3.0
+    fix_tag: v3.4.0
+    fix_urls:
+      - "https://github.com/growthbook/growthbook/pull/3310"
+    fix_commit: "0b6d70f0dd67e19993afefd67ca5b675b5642448"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2024-11-18"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Round 1."
+
+  - id: growthbook-3642
+    upstream_issue: "https://github.com/growthbook/growthbook/issues/3642"
+    symptom: "An attribute's reference count is wrong."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v3.4.0
+    fix_tag: v3.5.0
+    fix_urls:
+      - "https://github.com/growthbook/growthbook/pull/3759"
+    fix_commit: "8ba3e7f1f6cad4a47ac4eb6f603a663625bcc6b3"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-03-04"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Round 1."
+
+  - id: growthbook-3640
+    upstream_issue: "https://github.com/growthbook/growthbook/issues/3640"
+    symptom: "Edit Phases crashes after all phases are deleted."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v3.4.0
+    fix_tag: v3.5.0
+    fix_urls:
+      - "https://github.com/growthbook/growthbook/pull/3714"
+    fix_commit: "9d93662f47af44bf1eccce7f53c20588c267a729"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-02-25"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Round 1."
+
+  - id: growthbook-3428
+    upstream_issue: "https://github.com/growthbook/growthbook/issues/3428"
+    symptom: "Importing a config.yml in the UI fails."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v3.4.0
+    fix_tag: v3.5.0
+    fix_urls:
+      - "https://github.com/growthbook/growthbook/pull/3539"
+    fix_commit: f446ac1f9b11e7114b54812c4efd402b4b32db39
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-01-15"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Round 1."
+
+  - id: growthbook-3543
+    upstream_issue: "https://github.com/growthbook/growthbook/issues/3543"
+    symptom: "Feature rule environment tabs are forced onto one line, so the last environment tab (for example the 15th) can't be reached."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: f45ee09
+    fix_tag: v3.5.0
+    fix_urls:
+      - "https://github.com/growthbook/growthbook/pull/3544"
+    fix_commit: "972dfd65002b58499bcfd7da3bbd37aa957f425f"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-01-16"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Round 1. The bug is NOT in v3.4.0 (introduced after it), so the bug build is image git-f45ee09."
+
+  - id: growthbook-7109
+    upstream_issue: "https://github.com/growthbook/growthbook/issues/7109"
+    symptom: "A false-positive feature-rule conflict warning appears when another required attribute makes the two audiences mutually exclusive."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v5.1.0
+    fix_tag: v5.2.0
+    fix_urls:
+      - "https://github.com/growthbook/growthbook/pull/7126"
+    fix_commit: f80ebe7d7f208f118e6a004de8ab824da73ee8c1
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-09-24"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Round 2."
+
+  - id: growthbook-3160
+    upstream_issue: "https://github.com/growthbook/growthbook/issues/3160"
+    symptom: "Code blocks in markdown are not readable in the dark theme."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v3.2.0
+    fix_tag: v3.3.0
+    fix_urls:
+      - "https://github.com/growthbook/growthbook/pull/3237"
+    fix_commit: "1182383ddf4b149b9096d46f56070827f55f30ed"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2024-11-01"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Round 2."
+
+  - id: growthbook-2818
+    upstream_issue: "https://github.com/growthbook/growthbook/issues/2818"
+    symptom: "A running experiment stops immediately when a future stop date is picked."
+    layer: [UI, DB]
+    feature_tags: []
+    bug_tag: v3.1.0
+    fix_tag: v3.2.0
+    fix_urls:
+      - "https://github.com/growthbook/growthbook/pull/2819"
+    fix_commit: c4de05204aa731e66a83c47cc0a8ee4857a88a93
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2024-07-30"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Round 2."
+
+  - id: growthbook-4478
+    upstream_issue: "https://github.com/growthbook/growthbook/issues/4478"
+    symptom: "The date and the time shown in the phase selector don't match."
+    layer: [UI]
+    feature_tags: [timezone]
+    bug_tag: v4.0.0
+    fix_tag: v4.1.0
+    fix_urls:
+      - "https://github.com/growthbook/growthbook/pull/4490"
+    fix_commit: "545f576ee0e5575d9e94e4cf31d9b51017c30102"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-08-28"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Round 2. Depends on the browser time zone."

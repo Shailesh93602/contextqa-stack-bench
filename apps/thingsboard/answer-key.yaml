@@ -1,0 +1,162 @@
+# Answer key: real upstream bugs, each with a bug release and the next (fixed) release.
+# compare_verified = git compare showed the fix absent from bug_tag and present in fix_tag.
+# split stays empty until the key is frozen. Do not edit facts after freezing; add a new key version.
+
+schema_version: 1
+app: thingsboard
+upstream_repo: "https://github.com/thingsboard/thingsboard"
+bugs:
+  - id: thingsboard-13724
+    upstream_issue: "https://github.com/thingsboard/thingsboard/issues/13724"
+    symptom: "Rule chain \"Math function\" node: a default value of 0 shows as an empty field."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v4.1
+    fix_tag: v4.2
+    fix_urls:
+      - "https://github.com/thingsboard/thingsboard/pull/13727"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-07-17"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: thingsboard-12462
+    upstream_issue: "https://github.com/thingsboard/thingsboard/issues/12462"
+    symptom: "Map widget: the polygon colour and stroke colour settings change nothing."
+    layer: [UI]
+    feature_tags: [canvas]
+    bug_tag: v3.9
+    fix_tag: v3.9.1
+    fix_urls:
+      - "https://github.com/thingsboard/thingsboard/pull/12456"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-01-17"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Reported on the hosted cloud edition; that CE 3.9 shows it is inferred."
+
+  - id: thingsboard-12452
+    upstream_issue: "https://github.com/thingsboard/thingsboard/issues/12452"
+    symptom: "Map widget: \"Create circle\" then clicking the map does nothing."
+    layer: [UI]
+    feature_tags: [canvas]
+    bug_tag: v3.9
+    fix_tag: v3.9.1
+    fix_urls:
+      - "https://github.com/thingsboard/thingsboard/pull/12455"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-01-17"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Reported on the hosted cloud edition; that CE 3.9 shows it is inferred."
+
+  - id: thingsboard-12507
+    upstream_issue: "https://github.com/thingsboard/thingsboard/issues/12507"
+    symptom: "The \"Update device attribute\" widget button does nothing (console: ctx.sendCommand is not a function)."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v3.9
+    fix_tag: v3.9.1
+    fix_urls:
+      - "https://github.com/thingsboard/thingsboard/pull/12511"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-01-31"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Reported on the hosted cloud edition; that CE 3.9 shows it is inferred."
+
+  - id: thingsboard-10445
+    upstream_issue: "https://github.com/thingsboard/thingsboard/issues/10445"
+    symptom: "\"Browse from gallery\" for marker images never opens the picker."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v3.6.3
+    fix_tag: v3.6.4
+    fix_urls:
+      - "https://github.com/thingsboard/thingsboard/pull/10449"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2024-03-26"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: thingsboard-10438
+    upstream_issue: "https://github.com/thingsboard/thingsboard/issues/10438"
+    symptom: "Map widget: the \"draggable marker\" button does nothing."
+    layer: [UI]
+    feature_tags: [canvas]
+    bug_tag: v3.6.3
+    fix_tag: v3.6.4
+    fix_urls:
+      - "https://github.com/thingsboard/thingsboard/pull/10446"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2024-03-26"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: thingsboard-10432
+    upstream_issue: "https://github.com/thingsboard/thingsboard/issues/10432"
+    symptom: "Time-series chart: clicking a hidden series in the legend does not show its line."
+    layer: [UI]
+    feature_tags: [canvas]
+    bug_tag: v3.7
+    fix_tag: v3.8
+    fix_urls:
+      - "https://github.com/thingsboard/thingsboard/pull/11168"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2024-07-22"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: thingsboard-14876
+    upstream_issue: "https://github.com/thingsboard/thingsboard/issues/14876"
+    symptom: "The alarm type filter dropdown shows raw i18n keys instead of labels."
+    layer: [UI]
+    feature_tags: [locale]
+    bug_tag: v4.2.1
+    fix_tag: v4.2.1.1
+    fix_urls:
+      - "https://github.com/thingsboard/thingsboard/pull/14143"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-10-31"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Fix PR named in a maintainer comment."
+
+  - id: thingsboard-8112
+    upstream_issue: "https://github.com/thingsboard/thingsboard/issues/8112"
+    symptom: "The horizontal bar widget fills the wrong length for values like 42.0."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v3.4.4
+    fix_tag: v3.5
+    fix_urls:
+      - "https://github.com/thingsboard/thingsboard/pull/8118"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2023-03-28"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: thingsboard-14856
+    upstream_issue: "https://github.com/thingsboard/thingsboard/issues/14856"
+    symptom: "The Send RPC button widget breaks after you open its settings."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v4.3
+    fix_tag: v4.3.0.1
+    fix_urls:
+      - "https://github.com/thingsboard/thingsboard/commit/19d50f14846cf37555ec86ddb2e57743bf19bf60"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-01-22"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "The issue body is only a screenshot; the symptom is inferred from the title and the fix commit."

@@ -1,0 +1,38 @@
+# Recipe skeleton: what our research already knows about running this app. Not boot-tested unless a note says so.
+# null = not recorded yet.
+
+schema_version: 1
+app: nopcommerce
+name: nopCommerce
+upstream_repo: "https://github.com/nopSolutions/nopCommerce"
+licence: "nopCommerce Public License 4.0 (AGPL-3.0 plus a \"powered by\" footer). Self-hosting is allowed."
+stack:
+  frontend: [razor]
+  backend: [dotnet]
+  db: [postgres]
+versions:
+  - version: release-4.90.2
+    images: ["nopcommerceteam/nopcommerce:4.90.2", "postgres:16"]
+  - version: release-4.90.3
+    images: ["nopcommerceteam/nopcommerce:4.90.3", "postgres:16"]
+  - version: release-4.90.4
+    images: ["nopcommerceteam/nopcommerce:4.90.4", "postgres:16"]
+  - version: release-4.90.5
+    images: ["nopcommerceteam/nopcommerce:4.90.5", "postgres:16"]
+  - version: release-4.90.6
+    images: ["nopcommerceteam/nopcommerce:4.90.6", "postgres:16"]
+  - version: release-4.90.7
+    images: ["nopcommerceteam/nopcommerce:4.90.7", "postgres:16"]
+services: ["nopcommerce web", "postgres:16 (one database per version)"]
+ports:
+  app: 80
+ram_per_version: "about 0.7-1 GB per web instance plus about 150 MB for Postgres (inferred)"
+public_url_setting: "HostingConfig:UseProxy=true may be needed (inferred)"
+admin_bootstrap:
+  - "Finish the install wizard (admin email/password, database, install sample data) before any URL is public."
+seed:
+  - "Tick \"install sample data\" in the wizard."
+sign_in:
+  type: password
+hosting_notes:
+  - "The upstream compose files build from source; use the published image plus postgres:16. MSSQL images are amd64-only (inferred)."

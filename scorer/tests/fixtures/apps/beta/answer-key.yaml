@@ -1,0 +1,30 @@
+schema_version: 1
+app: beta
+upstream_repo: "https://github.com/example/beta"
+bugs:
+  - id: beta-1
+    upstream_issue: "https://github.com/example/beta/issues/1"
+    symptom: "A member can open admin settings"
+    layer: [UI, API]
+    feature_tags: [roles]
+    bug_tag: "2.0"
+    fix_tag: "2.1"
+    fix_urls: ["https://github.com/example/beta/commit/abcdef1"]
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-02-01"
+    split: heldout
+    ticket_tiers: [vague]
+  - id: beta-2
+    upstream_issue: "https://github.com/example/beta/issues/2"
+    symptom: "Not split yet"
+    layer: [UI]
+    feature_tags: []
+    bug_tag: "2.0"
+    fix_tag: "2.1"
+    fix_urls: ["https://github.com/example/beta/pull/3"]
+    compare_verified: false
+    bug_presence_verified: false
+    fixed_at: "2026-02-02"
+    split: ""
+    ticket_tiers: [clear]

@@ -1,0 +1,175 @@
+# Answer key: real upstream bugs, each with a bug release and the next (fixed) release.
+# compare_verified = git compare showed the fix absent from bug_tag and present in fix_tag.
+# split stays empty until the key is frozen. Do not edit facts after freezing; add a new key version.
+
+schema_version: 1
+app: ghost
+upstream_repo: "https://github.com/TryGhost/Ghost"
+bugs:
+  - id: ghost-32274
+    upstream_issue: "https://github.com/TryGhost/Ghost/issues/32274"
+    symptom: "A duplicated page loses its \"hide title and feature image\" setting."
+    layer: [API, DB]
+    feature_tags: []
+    bug_tag: "6.73.0"
+    fix_tag: "6.74.0"
+    fix_urls:
+      - "https://github.com/TryGhost/Ghost/pull/32280"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-10-30"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: ghost-32147
+    upstream_issue: "https://github.com/TryGhost/Ghost/issues/32147"
+    symptom: "Changing the site time zone shifts scheduled posts by one hour."
+    layer: [DB]
+    feature_tags: [timezone]
+    bug_tag: "6.73.0"
+    fix_tag: "6.74.0"
+    fix_urls:
+      - "https://github.com/TryGhost/Ghost/pull/32148"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-10-27"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Needs a post scheduled across a daylight-saving change."
+
+  - id: ghost-32138
+    upstream_issue: "https://github.com/TryGhost/Ghost/issues/32138"
+    symptom: "Navigation adds a trailing \"/\" to tel: links."
+    layer: [UI, DB]
+    feature_tags: []
+    bug_tag: "6.73.0"
+    fix_tag: "6.74.0"
+    fix_urls:
+      - "https://github.com/TryGhost/Ghost/pull/32139"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-10-27"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: ghost-32045
+    upstream_issue: "https://github.com/TryGhost/Ghost/issues/32045"
+    symptom: "Bulk \"Add a tag\" makes the new tag match primary_tag filters."
+    layer: [API, DB]
+    feature_tags: []
+    bug_tag: "6.72.0"
+    fix_tag: "6.73.0"
+    fix_urls:
+      - "https://github.com/TryGhost/Ghost/pull/32046"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-10-26"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: ghost-29623
+    upstream_issue: "https://github.com/TryGhost/Ghost/issues/29623"
+    symptom: "Feature-image alt text over 191 characters is silently discarded."
+    layer: [UI, DB]
+    feature_tags: []
+    bug_tag: "6.54.1"
+    fix_tag: "6.55.0"
+    fix_urls:
+      - "https://github.com/TryGhost/Ghost/pull/29681"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-07-30"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: ghost-24313
+    upstream_issue: "https://github.com/TryGhost/Ghost/issues/24313"
+    symptom: "Pages cannot be filtered by tag."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: "5.129.2"
+    fix_tag: "5.130.0"
+    fix_urls:
+      - "https://github.com/TryGhost/Ghost/pull/24345"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-07-14"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: ghost-23946
+    upstream_issue: "https://github.com/TryGhost/Ghost/issues/23946"
+    symptom: "The staff \"Invited\" tab shows only 15 invites."
+    layer: [UI, API]
+    feature_tags: [email]
+    bug_tag: "6.0.4"
+    fix_tag: "6.0.5"
+    fix_urls:
+      - "https://github.com/TryGhost/Ghost/pull/24095"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-08-18"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Needs 16 invites, so mail is needed."
+
+  - id: ghost-24515
+    upstream_issue: "https://github.com/TryGhost/Ghost/issues/24515"
+    symptom: "Opening \"Post history\" on a new post freezes the screen."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: "6.0.3"
+    fix_tag: "6.0.4"
+    fix_urls:
+      - "https://github.com/TryGhost/Ghost/pull/24514"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-08-14"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: ghost-22764
+    upstream_issue: "https://github.com/TryGhost/Ghost/issues/22764"
+    symptom: "Admin search doesn't match titles with accented characters."
+    layer: [UI]
+    feature_tags: [locale]
+    bug_tag: "5.118.1"
+    fix_tag: "5.119.0"
+    fix_urls:
+      - "https://github.com/TryGhost/Ghost/pull/22874"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-04-30"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: ghost-29221
+    upstream_issue: "https://github.com/TryGhost/Ghost/issues/29221"
+    symptom: "Editing a copied gallery changes the original gallery."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: "6.72.0"
+    fix_tag: "6.73.0"
+    fix_urls:
+      - "https://github.com/TryGhost/Ghost/pull/31761"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-10-26"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: ghost-24030
+    upstream_issue: "https://github.com/TryGhost/Ghost/issues/24030"
+    symptom: "Copy and cut don't work in the editor."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: "5.127.0"
+    fix_tag: "5.127.1"
+    fix_urls:
+      - "https://github.com/TryGhost/Ghost/pull/24035"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-06-24"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Clipboard in a headless runner is uncertain."

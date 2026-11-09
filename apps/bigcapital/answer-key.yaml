@@ -1,0 +1,225 @@
+# Answer key: real upstream bugs, each with a bug release and the next (fixed) release.
+# compare_verified = git compare showed the fix absent from bug_tag and present in fix_tag.
+# split stays empty until the key is frozen. Do not edit facts after freezing; add a new key version.
+
+schema_version: 1
+app: bigcapital
+upstream_repo: "https://github.com/bigcapitalhq/bigcapital"
+bugs:
+  - id: bigcapital-1498
+    upstream_issue: "https://github.com/bigcapitalhq/bigcapital/issues/1498"
+    symptom: "Expense form: the chosen Customer is silently dropped on save."
+    layer: [UI, API, DB]
+    feature_tags: []
+    bug_tag: v0.25.42
+    fix_tag: v0.25.44
+    fix_urls:
+      - "https://github.com/bigcapitalhq/bigcapital/pull/1508"
+    compare_verified: true
+    bug_presence_verified: true
+    fixed_at: "2026-10-11"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "The reporter names v0.25.42."
+
+  - id: bigcapital-1417
+    upstream_issue: "https://github.com/bigcapitalhq/bigcapital/issues/1417"
+    symptom: "Cash flow statement: net cash and ending cash are always $0.00."
+    layer: [API]
+    feature_tags: []
+    bug_tag: v0.25.40
+    fix_tag: v0.25.41
+    fix_urls:
+      - "https://github.com/bigcapitalhq/bigcapital/pull/1418"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-09-17"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: bigcapital-1380
+    upstream_issue: "https://github.com/bigcapitalhq/bigcapital/issues/1380"
+    symptom: "A Manual Journal date is off by one day (shows one day earlier, saves one day later)."
+    layer: [UI, API, DB]
+    feature_tags: [timezone]
+    bug_tag: v0.25.42
+    fix_tag: v0.25.44
+    fix_urls:
+      - "https://github.com/bigcapitalhq/bigcapital/pull/1517"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-10-15"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Needs browser time zone America/Los_Angeles."
+
+  - id: bigcapital-1372
+    upstream_issue: "https://github.com/bigcapitalhq/bigcapital/issues/1372"
+    symptom: "Roles: the permission checkboxes cannot be clicked."
+    layer: [UI]
+    feature_tags: [roles]
+    bug_tag: v0.25.38
+    fix_tag: v0.25.39
+    fix_urls:
+      - "https://github.com/bigcapitalhq/bigcapital/pull/1373"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-09-09"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: bigcapital-1311
+    upstream_issue: "https://github.com/bigcapitalhq/bigcapital/issues/1311"
+    symptom: "The \"Generate API Key\" button does nothing."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.25.35
+    fix_tag: v0.25.36
+    fix_urls:
+      - "https://github.com/bigcapitalhq/bigcapital/pull/1310"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-08-31"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: bigcapital-1305
+    upstream_issue: "https://github.com/bigcapitalhq/bigcapital/issues/1305"
+    symptom: "Uploading a logo or attachment logs the user out."
+    layer: [API]
+    feature_tags: [upload]
+    bug_tag: v0.25.35
+    fix_tag: v0.25.36
+    fix_urls:
+      - "https://github.com/bigcapitalhq/bigcapital/pull/1306"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-08-30"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Needs S3 storage configured."
+
+  - id: bigcapital-1277
+    upstream_issue: "https://github.com/bigcapitalhq/bigcapital/issues/1277"
+    symptom: "The \"Purchases by items\" report is blank."
+    layer: [API]
+    feature_tags: []
+    bug_tag: v0.25.33
+    fix_tag: v0.25.34
+    fix_urls:
+      - "https://github.com/bigcapitalhq/bigcapital/pull/1280"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-08-24"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: bigcapital-1069
+    upstream_issue: "https://github.com/bigcapitalhq/bigcapital/issues/1069"
+    symptom: "Some reports show USD although the base currency is EUR."
+    layer: [API, DB]
+    feature_tags: []
+    bug_tag: v0.25.20
+    fix_tag: v0.25.22
+    fix_urls:
+      - "https://github.com/bigcapitalhq/bigcapital/pull/1074"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-04-13"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "v0.25.21 has no webapp image; v0.25.22 re-checked (fix present). Organisation in EUR; AR Aging / AP Aging / Vendor Balance."
+
+  - id: bigcapital-1025
+    upstream_issue: "https://github.com/bigcapitalhq/bigcapital/issues/1025"
+    symptom: "Selects send the wrong IDs, so creating a vendor or item fails with a 400 error."
+    layer: [UI, API]
+    feature_tags: []
+    bug_tag: v0.25.16
+    fix_tag: v0.25.18
+    fix_urls:
+      - "https://github.com/bigcapitalhq/bigcapital/pull/1027"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-03-07"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "v0.25.17 has no image; v0.25.18 re-checked (fix present)."
+
+  - id: bigcapital-1023
+    upstream_issue: "https://github.com/bigcapitalhq/bigcapital/issues/1023"
+    symptom: "Chart of Accounts views (Assets, Liabilities, ...) don't filter."
+    layer: [API]
+    feature_tags: []
+    bug_tag: v0.25.16
+    fix_tag: v0.25.18
+    fix_urls:
+      - "https://github.com/bigcapitalhq/bigcapital/pull/1026"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-03-07"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "v0.25.18 re-checked (fix present)."
+
+  - id: bigcapital-1016
+    upstream_issue: "https://github.com/bigcapitalhq/bigcapital/issues/1016"
+    symptom: "A payment amount with cents is rejected."
+    layer: [API]
+    feature_tags: []
+    bug_tag: v0.25.16
+    fix_tag: v0.25.18
+    fix_urls:
+      - "https://github.com/bigcapitalhq/bigcapital/pull/1021"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-03-06"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "API validation, visible in the UI. v0.25.18 re-checked (fix present)."
+
+  - id: bigcapital-1041
+    upstream_issue: "https://github.com/bigcapitalhq/bigcapital/issues/1041"
+    symptom: "The account type is misspelled \"none-current-asset\"."
+    layer: [UI, DB]
+    feature_tags: []
+    bug_tag: v0.25.18
+    fix_tag: v0.25.19
+    fix_urls:
+      - "https://github.com/bigcapitalhq/bigcapital/pull/1046"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-03-16"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: bigcapital-788
+    upstream_issue: "https://github.com/bigcapitalhq/bigcapital/issues/788"
+    symptom: "Sorting the Chart of Accounts by Code doesn't work."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.25.40
+    fix_tag: v0.25.41
+    fix_urls:
+      - "https://github.com/bigcapitalhq/bigcapital/pull/1404"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-09-15"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: bigcapital-558
+    upstream_issue: "https://github.com/bigcapitalhq/bigcapital/issues/558"
+    symptom: "Invoice edit page shows the wrong Due Amount with \"Exclusive of Tax\"."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: v0.19.0
+    fix_tag: v0.19.1
+    fix_urls:
+      - "https://github.com/bigcapitalhq/bigcapital/pull/562"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2024-08-07"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Old (pre-NestJS) stack; its compose may differ."

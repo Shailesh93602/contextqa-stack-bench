@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "answer-key.schema.json",
+  "title": "Answer key for one app: real upstream bugs, each with a bug release and a fixed release",
+  "type": "object",
+  "required": ["schema_version", "app", "upstream_repo", "bugs"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"type": "integer", "enum": [1]},
+    "app": {"type": "string", "pattern": "^[a-z0-9-]+$", "description": "Folder name under apps/."},
+    "upstream_repo": {"type": "string", "pattern": "^https://github\\.com/[^/]+/[^/]+$"},
+    "bugs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "upstream_issue", "symptom", "layer", "feature_tags", "bug_tag", "fix_tag",
+                     "fix_urls", "compare_verified", "bug_presence_verified", "fixed_at", "split", "ticket_tiers"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9-]+-[0-9]+$", "description": "<app>-<upstream issue number>."},
+          "upstream_issue": {"type": "string", "pattern": "^https://github\\.com/.+/issues/[0-9]+$"},
+          "symptom": {"type": "string", "description": "What a user sees, in plain words. No hint of the fix."},
+          "layer": {
+            "type": "array",
+            "items": {"type": "string", "enum": ["UI", "API", "DB"]},
+            "description": "Where the defect shows or is stored. UI only when nothing deeper is known."
+          },
+          "feature_tags": {
+            "type": "array",
+            "items": {"type": "string", "enum": ["email", "upload", "websocket", "iframe", "shadow-dom", "canvas",
+                                                  "timezone", "locale", "roles", "payments", "db-specific"]},
+            "description": "App features the bug touches. The sign-in type comes from recipe.yaml and is added by the scorer."
+          },
+          "bug_tag": {"type": "string", "description": "Upstream release that has the bug. Must be a version in recipe.yaml."},
+          "fix_tag": {"type": "string", "description": "Next upstream release, which has the fix. Must be a version in recipe.yaml."},
+          "fix_urls": {"type": "array", "items": {"type": "string", "pattern": "^https://github\\.com/.+/(pull/[0-9]+|commit/[0-9a-f]{7,40})$"}},
+          "fix_commit": {"type": "string", "pattern": "^[0-9a-f]{7,40}$", "description": "Merge commit of the fix, when recorded."},
+          "compare_verified": {"type": "boolean", "description": "true = git compare showed the fix absent from bug_tag and present in fix_tag."},
+          "bug_presence_verified": {"type": "boolean", "description": "true = the bug was seen on bug_tag (reporter named that version, or a person saw it). false = only the fix's absence is verified."},
+          "fixed_at": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$", "description": "Date the fix merged upstream. Used to prefer bugs fixed after a model's training cutoff."},
+          "split": {"type": "string", "enum": ["", "dev", "heldout"], "description": "Empty until the key is frozen; then dev or heldout."},
+          "ticket_tiers": {"type": "array", "items": {"type": "string", "enum": ["upstream-text", "clear", "vague"]}},
+          "notes": {"type": "string"}
+        }
+      }
+    }
+  }
+}

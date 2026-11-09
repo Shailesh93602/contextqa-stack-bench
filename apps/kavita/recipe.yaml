@@ -1,0 +1,45 @@
+# Recipe skeleton: what our research already knows about running this app. Not boot-tested unless a note says so.
+# null = not recorded yet.
+
+schema_version: 1
+app: kavita
+name: Kavita
+upstream_repo: "https://github.com/Kareadita/Kavita"
+licence: GPL-3.0
+stack:
+  frontend: [angular]
+  backend: [dotnet]
+  db: [sqlite]
+versions:
+  - version: v0.8.3.2
+    images: ["jvmilazz0/kavita:0.8.3"]
+  - version: v0.8.4.2
+    images: ["jvmilazz0/kavita:0.8.4"]
+  - version: v0.8.5.11
+    images: ["jvmilazz0/kavita:0.8.5"]
+  - version: v0.8.6.2
+    images: ["jvmilazz0/kavita:0.8.6"]
+  - version: v0.8.7
+    images: ["jvmilazz0/kavita:0.8.7"]
+  - version: v0.9.0.2
+    images: ["jvmilazz0/kavita:0.9.0.2"]
+  - version: v0.9.1.4
+    images: ["jvmilazz0/kavita:0.9.1"]
+services:
+  - "kavita (one container, SQLite in /kavita/config)"
+ports:
+  app: 5000
+ram_per_version: "about 200-400 MB (inferred)"
+public_url_setting: null
+admin_bootstrap:
+  - "Register the admin account before any URL is public: until then anyone with the URL can claim admin."
+  - "Add a library pointing at the books folder and wait for the scan."
+  - "Check the build under Settings > System (some images have no revision label)."
+seed:
+  - "A few public-domain CBZ comics (one with tall pages for webtoon mode), one EPUB, one PDF."
+  - "kavita-3274: a non-admin user with age rating Teen and without the change-age-rating permission."
+sign_in:
+  type: password
+hosting_notes:
+  - "Image tags are re-pushed: each minor tag is overwritten by its last patch release. The version here is the git tag; the image is the minor tag."
+  - "Use one config folder per version, never shared."

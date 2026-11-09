@@ -1,0 +1,57 @@
+# Recipe skeleton: what our research already knows about running this app. Not boot-tested unless a note says so.
+# null = not recorded yet.
+
+schema_version: 1
+app: thingsboard
+name: "ThingsBoard CE"
+upstream_repo: "https://github.com/thingsboard/thingsboard"
+licence: "Apache-2.0 up to v4.3.x; v4.4.0 and later are Business Source License. Keep every pair at v4.3.x or below."
+stack:
+  frontend: [angular]
+  backend: [java, spring-boot]
+  db: [postgres]
+versions:
+  - version: v3.4.4
+    images: ["thingsboard/tb-postgres:3.4.4"]
+  - version: v3.5
+    images: ["thingsboard/tb-postgres:3.5.0"]
+  - version: v3.6.3
+    images: ["thingsboard/tb-postgres:3.6.3"]
+  - version: v3.6.4
+    images: ["thingsboard/tb-postgres:3.6.4"]
+  - version: v3.7
+    images: ["thingsboard/tb-postgres:3.7.0"]
+  - version: v3.8
+    images: ["thingsboard/tb-postgres:3.8.0"]
+  - version: v3.9
+    images: ["thingsboard/tb-postgres:3.9.0"]
+  - version: v3.9.1
+    images: ["thingsboard/tb-postgres:3.9.1"]
+  - version: v4.1
+    images: ["thingsboard/tb-postgres:4.1.0"]
+  - version: v4.2
+    images: ["thingsboard/tb-postgres:4.2.0"]
+  - version: v4.2.1
+    images: ["thingsboard/tb-postgres:4.2.1"]
+  - version: v4.2.1.1
+    images: ["thingsboard/tb-postgres:4.2.1.1"]
+  - version: v4.3
+    images: ["thingsboard/tb-node:4.3.0", postgres]
+  - version: v4.3.0.1
+    images: ["thingsboard/tb-node:4.3.0.1", postgres]
+services:
+  - "tb-postgres (one container with Postgres built in)"
+ports:
+  app: 9090
+ram_per_version: "4 GB for ThingsBoard + Postgres (upstream docs, development / PoC)"
+public_url_setting: null
+admin_bootstrap:
+  - "Default users are created on first start with public default passwords: change them before any URL is public."
+  - "Data directories must be owned by uid 799."
+seed:
+  - "Map and chart bugs need a dashboard with the widget configured."
+sign_in:
+  type: password
+hosting_notes:
+  - "No tb-postgres image for 4.3.x: use tb-node plus a postgres container (the official compose shape)."
+  - "Most UI bugs sit in dashboard widgets and maps, which need widget setup and canvas interaction."

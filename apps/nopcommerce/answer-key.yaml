@@ -1,0 +1,190 @@
+# Answer key: real upstream bugs, each with a bug release and the next (fixed) release.
+# compare_verified = git compare showed the fix absent from bug_tag and present in fix_tag.
+# split stays empty until the key is frozen. Do not edit facts after freezing; add a new key version.
+
+schema_version: 1
+app: nopcommerce
+upstream_repo: "https://github.com/nopSolutions/nopCommerce"
+bugs:
+  - id: nopcommerce-7981
+    upstream_issue: "https://github.com/nopSolutions/nopCommerce/issues/7981"
+    symptom: "Login/register inputs are misaligned with their labels."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: release-4.90.2
+    fix_tag: release-4.90.3
+    fix_urls:
+      - "https://github.com/nopSolutions/nopCommerce/commit/4fe1ae967d67a4596a8f10e052fd78bff3ddfb77"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-11-28"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: nopcommerce-7976
+    upstream_issue: "https://github.com/nopSolutions/nopCommerce/issues/7976"
+    symptom: "\"Remember me\" and \"Forgot password?\" are misaligned."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: release-4.90.2
+    fix_tag: release-4.90.3
+    fix_urls:
+      - "https://github.com/nopSolutions/nopCommerce/commit/4fe1ae967d67a4596a8f10e052fd78bff3ddfb77"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-11-28"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Same fix commit as nopcommerce-7981."
+
+  - id: nopcommerce-7977
+    upstream_issue: "https://github.com/nopSolutions/nopCommerce/issues/7977"
+    symptom: "Gender radio buttons are misaligned on the register page."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: release-4.90.2
+    fix_tag: release-4.90.3
+    fix_urls:
+      - "https://github.com/nopSolutions/nopCommerce/commit/4fe1ae967d67a4596a8f10e052fd78bff3ddfb77"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2025-11-28"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+    notes: "Same fix commit as nopcommerce-7981."
+
+  - id: nopcommerce-8083
+    upstream_issue: "https://github.com/nopSolutions/nopCommerce/issues/8083"
+    symptom: "After add-to-cart from the home page, \"Continue shopping\" goes to the wrong page."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: release-4.90.3
+    fix_tag: release-4.90.4
+    fix_urls:
+      - "https://github.com/nopSolutions/nopCommerce/commit/e5728da8f6ca60253a05aaba07596b59b0539d8a"
+      - "https://github.com/nopSolutions/nopCommerce/commit/ea7a7be0124eeff01af48b03e57c5f0dcdaec64c"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-02-04"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: nopcommerce-8086
+    upstream_issue: "https://github.com/nopSolutions/nopCommerce/issues/8086"
+    symptom: "The header wishlist count ignores items in a custom wishlist."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: release-4.90.3
+    fix_tag: release-4.90.4
+    fix_urls:
+      - "https://github.com/nopSolutions/nopCommerce/commit/a71bf009b245fc31689c096d4f9b4b87e979f5ce"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-02-05"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: nopcommerce-8090
+    upstream_issue: "https://github.com/nopSolutions/nopCommerce/issues/8090"
+    symptom: "A review submitted with no rating is saved as 5 stars."
+    layer: [UI, DB]
+    feature_tags: []
+    bug_tag: release-4.90.3
+    fix_tag: release-4.90.4
+    fix_urls:
+      - "https://github.com/nopSolutions/nopCommerce/commit/5cb964b2fe670dec5d05e08c43683a32c2fe6d52"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-02-05"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: nopcommerce-8123
+    upstream_issue: "https://github.com/nopSolutions/nopCommerce/issues/8123"
+    symptom: "Admin product bulk edit: \"Save selected\" does nothing."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: release-4.90.3
+    fix_tag: release-4.90.4
+    fix_urls:
+      - "https://github.com/nopSolutions/nopCommerce/commit/773bb6cec1788d69ab7e8cca40a10108d4463f0d"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-03-03"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: nopcommerce-8134
+    upstream_issue: "https://github.com/nopSolutions/nopCommerce/issues/8134"
+    symptom: "A CSS class set on a footer menu item is not applied."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: release-4.90.3
+    fix_tag: release-4.90.4
+    fix_urls:
+      - "https://github.com/nopSolutions/nopCommerce/commit/b1b01e3dece7fdd8136ab9be7b32cc3ea97f90ae"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-03-11"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: nopcommerce-8234
+    upstream_issue: "https://github.com/nopSolutions/nopCommerce/issues/8234"
+    symptom: "Admin order list: the Shipping status filter is single-select instead of multi-select."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: release-4.90.4
+    fix_tag: release-4.90.5
+    fix_urls:
+      - "https://github.com/nopSolutions/nopCommerce/commit/dc42deb960f87474904ce155174bef92c08691dc"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-06-18"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: nopcommerce-8235
+    upstream_issue: "https://github.com/nopSolutions/nopCommerce/issues/8235"
+    symptom: "Admin bulk edit: there is no Add button when the list is empty."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: release-4.90.4
+    fix_tag: release-4.90.5
+    fix_urls:
+      - "https://github.com/nopSolutions/nopCommerce/commit/946139f0ee076dee6d7539189359deea9bee2737"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-06-16"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: nopcommerce-8244
+    upstream_issue: "https://github.com/nopSolutions/nopCommerce/issues/8244"
+    symptom: "\"Request a quote\" still shows on the cart after the Request for Quote plugin (Misc.RFQ) is disabled."
+    layer: [UI]
+    feature_tags: []
+    bug_tag: release-4.90.5
+    fix_tag: release-4.90.6
+    fix_urls:
+      - "https://github.com/nopSolutions/nopCommerce/commit/6c39809cfc1dc716aa46a08117ca204c532d3696"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-07-02"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
+
+  - id: nopcommerce-8286
+    upstream_issue: "https://github.com/nopSolutions/nopCommerce/issues/8286"
+    symptom: "Admin can save a warehouse with the required Country and Zip empty."
+    layer: [UI, DB]
+    feature_tags: []
+    bug_tag: release-4.90.6
+    fix_tag: release-4.90.7
+    fix_urls:
+      - "https://github.com/nopSolutions/nopCommerce/commit/f83a8cda419b87af17be4699c8caf18f3c39ce15"
+    compare_verified: true
+    bug_presence_verified: false
+    fixed_at: "2026-08-25"
+    split: ""
+    ticket_tiers: [upstream-text, clear, vague]
