@@ -27,9 +27,10 @@ EXPECTED = {
 CAPABILITIES = ("repro", "verify_fix")
 
 # Pre-registered headline weights (method §3.7). Change only with a new scorecard version.
-# Capabilities this scorer cannot measure yet count as 0 and cap the band at Partial.
+# The headline re-normalises them over the capabilities actually measured.
 WEIGHTS = {"repro": 0.25, "verify_fix": 0.15, "pr_impact": 0.20,
            "generated_tests": 0.15, "consistency": 0.15, "api_db": 0.10}
+REQUIRED_FOR_WORKS = ("repro", "verify_fix", "pr_impact")
 
 
 # ---------- statistics ----------
@@ -315,21 +316,27 @@ def stats(runs, bug_ids, capability, n_runs):
     return {"k": k, "n": n, "stable": stable, "pass_all": all_ok, "m": m}
 
 
-def headline(cap_stats):
-    """Weighted mean of Wilson lower bounds; unmeasured capabilities count 0."""
-    total, measured = 0.0, []
-    for cap in CAPABILITIES:
-        s = cap_stats[cap]
-        if s["n"]:
-            total += WEIGHTS[cap] * wilson(s["k"], s["n"])[0]
-            measured.append(cap)
-    k = sum(cap_stats[c]["pass_all"] for c in CAPABILITIES)
-    m = sum(cap_stats[c]["m"] for c in CAPABILITIES)
+def measured_lowers(cap_stats):
+    """{capability: Wilson lower bound} for measured capabilities only; consistency = pooled pass^N."""
+    lowers = {c: wilson(s["k"], s["n"])[0] for c, s in cap_stats.items() if s["n"]}
+    m = sum(s["m"] for s in cap_stats.values())
     if m:
-        total += WEIGHTS["consistency"] * wilson(k, m)[0]
-        measured.append("consistency")
-    stable = sum(cap_stats[c]["stable"] for c in CAPABILITIES)
-    return total, measured, (stable / m if m else None)
+        lowers["consistency"] = wilson(sum(s["pass_all"] for s in cap_stats.values()), m)[0]
+    stable = sum(s["stable"] for s in cap_stats.values()) / m if m else None
+    return lowers, stable
+
+
+def headline(lowers):
+    """Weighted mean of lower bounds over measured capabilities, weights re-normalised. None if nothing measured."""
+    weight = sum(WEIGHTS[c] for c in lowers)
+    return sum(WEIGHTS[c] * lo for c, lo in lowers.items()) / weight if weight else None
+
+
+def headline_band(total, measured, stable_share):
+    """(band, reason). Works needs bug repro + verify-fix + PR impact measured; otherwise Partial at best."""
+    missing = [c for c in REQUIRED_FOR_WORKS if c not in measured]
+    why = f"best possible is Partial: Works needs {', '.join(missing)} measured" if missing else ""
+    return band(total, stable_share, not missing), why
 
 
 def groups(bugs):
@@ -384,10 +391,12 @@ def score(rows, apps, split="heldout", n_runs=5):
                 cons = (f"{s['stable']}/{s['m']}", f"{s['pass_all']}/{s['m']}") if s["m"] else ("-", "-")
                 out.append(f"{gname:<28} {cap:<11} {fmt_ci(s['k'], s['n']):<30} {cons[0]:<8} {cons[1]:<8} "
                            f"{band(ci[0] if ci else None, stable)}")
-            total, measured, stable = headline(cap_stats)
-            all_measured = set(measured) == set(WEIGHTS)
-            out.append(f"{'':<28} {'HEADLINE':<11} ≥ {pct_floor(total)}% weighted, {len(measured)}/{len(WEIGHTS)} "
-                       f"capabilities measured -> {band(total if measured else None, stable, all_measured)}")
+            lowers, stable = measured_lowers(cap_stats)
+            total = headline(lowers)
+            b, why = headline_band(total, lowers, stable)
+            score_txt = f"≥ {pct_floor(total)}% weighted over measured" if total is not None else "not measured"
+            out.append(f"{'':<28} {'HEADLINE':<11} {score_txt} -> {b}{f' ({why})' if why else ''}; "
+                       f"capabilities measured: {len(lowers)} of {len(WEIGHTS)} ({', '.join(lowers) or 'none'})")
         out.append("")
     return out, sorted(set(warnings))
 

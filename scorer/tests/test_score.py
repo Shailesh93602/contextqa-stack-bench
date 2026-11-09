@@ -126,11 +126,26 @@ class ScoreTest(unittest.TestCase):
         self.assertIn("(3/5,", row(lines, "all", "repro"))  # + alpha-3 correct, beta-2 INTERNAL_ERROR wrong
         self.assertTrue(any("correct=True disagrees" in w for w in warnings), warnings)
 
-    def test_headline_counts_unmeasured_capabilities_as_zero(self):
+    def test_headline_reweights_over_measured_only(self):
+        lowers = {"repro": 0.9, "verify_fix": 0.7}
+        expected = (0.25 * 0.9 + 0.15 * 0.7) / (0.25 + 0.15)
+        self.assertAlmostEqual(score.headline(lowers), expected)
+        self.assertIsNone(score.headline({}))
         lines, _ = fixture_score()
         head = [l for l in lines if "HEADLINE" in l][0]
-        self.assertIn("3/6 capabilities measured", head)
-        self.assertTrue(head.endswith("Not yet"), head)
+        lw = {"repro": score.wilson(2, 3)[0], "verify_fix": score.wilson(1, 1)[0], "consistency": score.wilson(1, 3)[0]}
+        self.assertIn(f"≥ {score.pct_floor(score.headline(lw))}% weighted over measured", head)
+        self.assertIn("capabilities measured: 3 of 6 (repro, verify_fix, consistency)", head)
+
+    def test_works_blocked_without_pr_impact(self):
+        b, why = score.headline_band(0.95, {"repro": 1, "verify_fix": 1, "consistency": 1}, 1.0)
+        self.assertEqual(b, "Partial")
+        self.assertIn("Works needs pr_impact measured", why)
+        b, why = score.headline_band(0.95, {"repro": 1, "verify_fix": 1, "pr_impact": 1, "consistency": 1}, 1.0)
+        self.assertEqual((b, why), ("Works", ""))
+        lines, _ = fixture_score()
+        head = [l for l in lines if "HEADLINE" in l][0]
+        self.assertIn("best possible is Partial: Works needs pr_impact measured", head)
 
     def test_mixed_stamps_are_refused(self):
         rows = score.read_results(FIXTURES / "results.jsonl")

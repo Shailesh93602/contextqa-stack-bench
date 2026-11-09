@@ -13,9 +13,9 @@ be added under `results/` once runs are done, with the evidence for every item.
 | Bug reproduction (`repro`) | Given a bug ticket, does ContextQA reproduce the bug? | It says **REPRODUCED on the bug release** and **NOT_REPRODUCED on the fixed release**, with the same ticket text. |
 | Verify-fix (`verify_fix`) | Does the regression test ContextQA saved tell the two releases apart? | The test **fails on the bug release** (NOT_FIXED) and **passes on the fixed release** (FIXED). |
 
-Only that exact verdict counts. On the fixed release, NEEDS_INFO or an error is wrong, not "close
+Only that exact verdict counts. **On the fixed release, NEEDS_INFO or an error is wrong**, not "close
 enough". PR impact, generated tests and API/DB checks will get their own answer keys and result
-formats later. Until then they count as 0 in the headline (see below), shown rather than hidden.
+formats later. Until then they are listed as not measured next to every headline.
 
 ## The rules
 
@@ -29,13 +29,18 @@ formats later. Until then they count as 0 in the headline (see below), shown rat
    changed. We report the **stable share** (items whose verdicts were identical on all 5 runs) and
    **pass^5** (items correct on all 5 runs) next to the single-run score. N = 3 is the minimum, and is
    labelled as such.
-4. **Error bars, never "100%".** Each score is k/n with a **Wilson 95% interval**. The headline is the
-   lower bound, rounded down: 30 out of 30 prints as "≥ 88%".
-5. **One weighted headline per group.** Headline = Σ weight × lower bound, with weights fixed before
-   any run: repro 0.25, verify-fix 0.15, PR impact 0.20, generated tests 0.15, consistency (pass^5)
-   0.15, API/DB checks 0.10. A capability that isn't measured counts as 0.
-6. **Bands:** **Works** needs a score ≥ 80%, consistency measured with ≥ 80% stable, and (for a
-   headline) every capability measured. **Partial** needs ≥ 50%. Anything lower is **Not yet**.
+4. **Error bars, never "100%".** Each score is k/n with a **Wilson 95% interval**. The score shown is
+   the lower bound, **always rounded down** (the upper bound is rounded up): 30 out of 30 prints as
+   "≥ 88%".
+5. **One weighted headline per group, over measured capabilities only.** Weights are fixed before any
+   run: repro 0.25, verify-fix 0.15, PR impact 0.20, generated tests 0.15, consistency (pass^5) 0.15,
+   API/DB checks 0.10. Headline = Σ weight × lower bound over the capabilities that were measured,
+   divided by the sum of their weights. Every headline is printed with "capabilities measured: k of 6
+   (names)", so a headline from two capabilities is never mistaken for one from six.
+6. **Bands:** **Works** needs a score ≥ 80%, consistency measured with ≥ 80% stable, and for a
+   headline, at least bug repro, verify-fix and PR impact measured. With fewer, the best possible
+   band is **Partial**, and the output says which capability is missing. **Partial** needs ≥ 50%.
+   Anything lower is **Not yet**.
 7. **Dev vs held-out.** Every answer key is split into a dev set (may be looked at while fixing
    ContextQA) and a held-out set (frozen, never used for fixing). **Only held-out scores are
    published.** A fix made after a held-out run means a new scorecard version and a full re-run; old
